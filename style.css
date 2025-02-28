@@ -1,0 +1,386 @@
+/*
+Theme Name:  Dade City Christian Church
+Theme URI:  https://www.elegantthemes.com/
+Description:  Divi Child
+Author:  Matt Jones
+Author URI:  https://mattjones.tech
+Version:  1.0.7
+Template:  Divi
+*/
+
+@import url(./styles/base.css);
+
+/*set active menu link color*/
+div#et-top-navigation nav#top-menu-nav ul#top-menu li.current-menu-item a {
+	color: var(--dccc-yellow);
+}
+
+div#et-top-navigation nav#top-menu-nav ul#top-menu li a {
+	color: var(--main-font-color);
+}
+
+/*make the search icon more visible*/
+#et_search_icon::before {
+	color: var(--main-font-color);
+}
+
+/***********************events header background color********************/
+div.tribe-common--breakpoint-medium.tribe-events header.tribe-events-header--has-event-search div.tribe-events-c-events-bar {
+	background-color: var(--main-header-color);
+}
+
+div.tribe-common--breakpoint-medium.tribe-events header.tribe-events-header--has-event-search div.tribe-events-c-events-bar div#tribe-events-search-container {
+	background-color: var(--main-header-color);
+}
+
+div.tribe-events .tribe-events-c-view-selector--tabs .tribe-events-c-view-selector__content {
+	background-color: var(--main-header-color);
+} 
+
+/********************events selected view underline color***********************/
+div.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-view-selector--tabs .tribe-events-c-view-selector__list-item--active .tribe-events-c-view-selector__list-item-link::after {
+	background-color: var(--dccc-yellow);
+}
+
+/*events header button color*/
+div.tribe-events .tribe-events-c-search__button {
+	background-color: var(--dccc-yellow);
+	color: var(--main-bg-color);
+}
+div.tribe-events .tribe-events-c-search__button:hover {
+	background-color: #7d7d7d;
+}
+/*search input text*/
+form.et-search-form input {
+	color: var(--main-font-color);
+}
+/*menu item font for events*/
+div.tribe-events .tribe-events-c-view-selector__list-item-text {
+	color: var(--main-font-color);
+}
+/*search bar placeholder*/
+div.tribe-events .tribe-events-c-events-bar .tribe-common-form-control-text__input::placeholder {
+	color: var(--main-font-color);
+	opacity: 100;
+}
+/*search icon for events*/
+div.tribe-events .tribe-events-c-search__input-control-icon-svg {
+	color: var(--main-font-color);
+}
+/*font color in list view*/
+div.tribe-common .tribe-common-h3, div.tribe-common .tribe-common-c-svgicon, div.tribe-common .tribe-common-h7, .tribe-common .tribe-common-h8, div.tribe-common .tribe-common-h5, .tribe-common .tribe-common-h6, div.tribe-events .tribe-events-calendar-list__event-datetime, div.tribe-events .tribe-events-calendar-list__event-title-link, div.tribe-common .tribe-common-b2 {
+	color: var(--main-font-color);
+}
+/*font color in month view*/
+div.tribe-events .tribe-events-calendar-month__day-date-daynum, div.tribe-events .tribe-events-calendar-month__day--past .tribe-events-calendar-month__day-date-link:focus, div.tribe-events .tribe-events-calendar-month__day--past .tribe-events-calendar-month__day-date-link, div.tribe-events .tribe-events-calendar-month__day--past .tribe-events-calendar-month__calendar-event-datetime {
+	color: var(--main-font-color);
+}
+/*multi-day in month view*/
+div.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner h3 {
+	color: var(--main-bg-color);
+}
+div.tribe-events .tribe-events-c-messages__message-list-item-link {
+	color: var(--dccc-yellow);
+}
+/*hover color month view*/
+div.tribe-events .tribe-events-calendar-month__day--past .tribe-events-calendar-month__day-date-link:hover {
+	color: white;
+}
+/*links in month view*/
+div.tribe-events .tribe-events-calendar-month__calendar-event-title-link, .tribe-events .tribe-events-calendar-month__calendar-event-tooltip-title-link, div.tribe-events .tribe-events-calendar-month__day-date-link {
+	color: var(--dccc-yellow);
+}
+div.tribe-events .tribe-events-calendar-month__calendar-event-title-link:hover {
+	color: var(--main-font-color);
+}
+div.tribe-events .tribe-events-calendar-month__calendar-event-title-link:visited {
+	color: var(--dccc-yellow);
+}
+div.tribe-events .tribe-events-calendar-month__calendar-event-title-link {
+	color: var(--dccc-yellow);
+	font-weight: bold;
+}
+div.tribe-events .tribe-events-calendar-month__multiday-event-bar {
+	background-color: var(--dccc-yellow);
+}
+div.tribe-events .tribe-events-calendar-month__calendar-event-datetime {
+	color: var(--main-font-color);
+}
+div.tribe-events .tribe-events-calendar-month__day-date-link {
+	color: var(--main-font-color);
+}
+div.tribe-events .tribe-events-calendar-month__day--current .tribe-events-calendar-month__day-date-link {
+	color: var(--main-font-color);
+}
+/*fix tooltips in month view*/
+div.tribe-events-tooltip-theme .tribe-events-calendar-month__calendar-event-tooltip-description p {
+	color: var(--main-bg-color);
+}
+div.tribe-common .tribe-common-c-svgicon__svg-fill {
+	fill: var(--main-font-color);
+}
+/*search input text*/
+input#tribe-events-events-bar-keyword {
+	color: var(--main-font-color);
+}
+/*links in list view*/
+div.tribe-events .tribe-events-calendar-series-archive__link {
+	color: var(--dccc-yellow);
+}
+.tribe-events .tribe-events-calendar-list__event-title-link:active, .tribe-events .tribe-events-calendar-list__event-title-link:focus, .tribe-events .tribe-events-calendar-list__event-title-link:visited {
+	color: var(--main-font-color);
+}
+.tribe-events .tribe-events-calendar-list__event-title-link:active, .tribe-events .tribe-events-calendar-list__event-title-link:focus, .tribe-events .tribe-events-calendar-list__event-title-link:hover {
+	color: var(--dccc-yellow);
+}
+/*next prev in day view*/
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-nav__next, .tribe-common--breakpoint-medium.tribe-events .tribe-events-c-nav__prev {
+	color: var(--dccc-yellow);
+}
+/*event title in single view*/
+div#tribe-events-content h1.tribe-events-single-event-title {
+	color: var(--main-font-color);
+}
+/*event info single view*/
+div.tribe-events-content {
+	color: var(--main-font-color);
+}
+div.tribe-events-content h3 {
+	color: var(--main-font-color);
+}
+div.tribe-events-schedule h2 {
+	color: var(--main-font-color);
+}
+dl dt, dl dd {
+	color: var(--main-font-color);
+}
+@media (min-width: 768px) {
+	div.tribe-events-meta-group {
+		width: 182px;
+	}
+}
+
+/*event tickets*/
+
+.tribe-tickets__tickets-item div.tribe-common .tribe-common-h7 {
+	color: var(--main-bg-color);
+}
+
+#tribe-tickets__tickets-form div.tribe-tickets__tickets-item .tribe-tickets__tickets-item-details-content {
+	color: var(--main-bg-color);
+}
+
+#tribe-tickets__tickets-form div.tribe-tickets__tickets-item .tribe-tickets__tickets-item-content-title {
+	color: var(--main-bg-color);
+}
+
+.tribe-tickets__tickets-item-extra div span span span {
+	color: var(--main-bg-color);
+}
+
+#tribe-tickets__tickets-form > div.tribe-tickets__tickets-footer.tribe-tickets__tickets-footer--active > div.tribe-common-b2.tribe-tickets__tickets-footer-quantity > span.tribe-tickets__tickets-footer-quantity-label {
+	color: var(--main-bg-color);
+}
+
+#tribe-tickets__tickets-form > div.tribe-tickets__tickets-footer.tribe-tickets__tickets-footer--active > div.tribe-common-b2.tribe-tickets__tickets-footer-total > span.tribe-tickets__tickets-footer-total-label {
+	color: var(--main-bg-color);
+}
+
+/*ticket checkout page*/
+#post-1093 > div > div > section > header > div > a {
+	color: var(--dccc-yellow);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > header > h4 > a {
+	color: var(--dccc-yellow);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > div > article > div.tribe-tickets__commerce-checkout-cart-item-details > div.tribe-common-h6.tribe-tickets__commerce-checkout-cart-item-details-title {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > div > article > div.tribe-tickets__commerce-checkout-cart-item-details > div.tribe-tickets__commerce-checkout-cart-item-details-toggle > button.tribe-common-b2.tribe-common-b3--min-medium.tribe-tickets__commerce-checkout-cart-item-details-button--more > span.tribe-tickets__commerce-checkout-cart-item-details-button-text {
+	color: var(--dccc-yellow);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > div > article > div.tribe-tickets__commerce-checkout-cart-item-price > span {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > div > article > div.tribe-tickets__commerce-checkout-cart-item-quantity {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > div > article > div.tribe-tickets__commerce-checkout-cart-item-subtotal {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > footer > div.tribe-tickets__commerce-checkout-cart-footer-quantity {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > footer > div.tribe-tickets__commerce-checkout-cart-footer-quantity > span.tribe-tickets__commerce-checkout-cart-footer-quantity-number {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > footer > div.tribe-tickets__commerce-checkout-cart-footer-total {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__commerce-checkout-cart > footer > div.tribe-tickets__commerce-checkout-cart-footer-total > span.tribe-tickets__commerce-checkout-cart-footer-total-wrap {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__form.tribe-tickets__commerce-checkout-purchaser-info-wrapper.tribe-common-b2 > div.tribe-tickets__commerce-checkout-purchaser-info-field.tribe-tickets__form-field.tribe-tickets__form-field--text > label {
+	color: var(--main-font-color);
+}
+
+#post-1093 > div > div > section > div.tribe-tickets__form.tribe-tickets__commerce-checkout-purchaser-info-wrapper.tribe-common-b2 > div.tribe-tickets__commerce-checkout-purchaser-info-field.tribe-tickets__form-field.tribe-tickets__form-field--email > label {
+	color: var(--main-font-color);
+}
+
+/*event time in day view*/
+.tribe-events .tribe-events-calendar-day__event-datetime {
+	color: var(--main-font-color);
+}
+.tribe-events-calendar-day__event-title-link {
+	color: var(--dccc-yellow);
+}
+
+.tribe-events .tribe-events-calendar-day__event-title-link:visited {
+	color: var(--dccc-yellow);
+}
+
+.tribe-events-series-relationship-single-marker--pill {
+	background-color: var(--main-header-color);
+}
+/*event series view*/
+span.tribe-event-date-start {
+	color: var(--dccc-yellow);
+}
+header.tribe-events-pro-summary__event-header h3.tribe-events-pro-summary__event-title a.tribe-common-anchor-thin {
+	color: var(--dccc-yellow);
+}
+
+/*event cost*/
+div.tribe-events-calendar-list__event-cost span {
+	color: var(--dccc-yellow);
+}
+div.tribe-events-schedule span.tribe-events-cost {
+	color: var(--dccc-yellow);
+}
+dl dt.tribe-events-event-cost-label {
+	color: var(--main-font-color);
+}
+dl dd.tribe-events-event-cost {
+	color: var(--dccc-yellow);
+}
+/*anchor tag in single view*/
+div#tribe-events-content p.tribe-events-back a {
+	color: var(--dccc-yellow);
+}
+/*event series in single view*/
+div#tribe-events-content div.tribe-events-series-relationship-single-marker span.tribe-events-series-relationship-single-marker__prefix {
+	color: var(--main-font-color);
+}
+div#tribe-events-content div.tribe-events-series-relationship-single-marker a.tribe-events-series-relationship-single-marker__title {
+	color: var(--dccc-yellow);
+}
+/*date and time in single view*/
+div#tribe-events-content div.tribe-events-schedule h2 span.tribe-event-date-start {
+	color: var(--main-font-color);
+}
+div#tribe-events-content div.tribe-events-schedule h2 span.tribe-event-time {
+	color: var(--main-font-color);
+}
+/*calendar button*/
+div.tribe-events.tribe-common div.tribe-events-c-subscribe-dropdown__container div.tribe-events-c-subscribe-dropdown div.tribe-common-c-btn-border {
+	color: var(--dccc-yellow);
+	background-color: var(--main-header-color);
+	border: 1px solid var(--dccc-yellow);
+}
+/*single view details section*/
+div.tribe-events-meta-group .tribe-events-single-section-title {
+	color: var(--main-font-color);
+}
+div.tribe-events-event-meta div.tribe-events-meta-group dl dt.tribe-events-start-date-label, div.tribe-events-event-meta div.tribe-events-meta-group dl dt.tribe-events-start-time-label, div.tribe-events-event-meta div.tribe-events-meta-group dl dt.tec-events-pro-series-meta-detail--label, div.tribe-events-event-meta div.tribe-events-meta-group dl dd * {
+	color: var(--main-font-color);
+}
+/*single event footer links*/
+div#tribe-events-footer nav.tribe-events-nav-pagination ul.tribe-events-sub-nav li a {
+	color: var(--dccc-yellow);
+}
+/*date number in footer*/
+div.tribe-events-widget .tribe-events-widget-events-list__event-date-tag-month {
+	color: var(--main-font-color);
+}
+div.tribe-common .tribe-common-h2 {
+	color: var(--main-font-color);
+}
+div#footer-widgets .footer-widget a {
+	color: var(--dccc-yellow);
+}
+.tribe-common a:not(.tribe-common-anchor--unstyle), .tribe-common a:not(.tribe-common-anchor--unstyle):active, .tribe-common a:not(.tribe-common-anchor--unstyle):focus, .tribe-common a:not(.tribe-common-anchor--unstyle):hover, .tribe-common a:not(.tribe-common-anchor--unstyle):visited {
+  color: var(--dccc-yellow);
+}
+span.tribe-event-time {
+  color: var(--main-font-color);
+}
+.tribe-events span.tribe-events-calendar-latest-past__event-date-tag-year {
+  color: var(--main-font-color);
+}
+.tribe-events span.tribe-events-calendar-latest-past__event-date-tag-month {
+  color: var(--main-font-color);
+}
+.tribe-events .tribe-events-calendar-month__header-column-title {
+  color: var(--main-font-color);
+}
+.tribe-common .tribe-common-c-btn-border-small, .tribe-common a.tribe-common-c-btn-border-small {
+  background-color: var(--main-header-color);
+}
+
+/*******************************menu******************************/
+/*bg color of dropdown menu*/
+ul#top-menu li ul.sub-menu {
+	background-color: var(--main-header-color);
+	border-top: 3px solid var(--dccc-yellow);
+}
+/*boost font size on teams page*/
+div.et_pb_blurb_container h4.et_pb_module_header span {
+	font-size: 1.5rem;
+}
+div.dccc-team div.et_pb_blurb_content {
+	background-color: var(--main-header-color);
+	padding: 2rem;
+	border-radius: 5px;
+}
+/*missions header*/
+section.missions-header div.et_pb_fullwidth_header_container div.header-content-container div.header-content div.et_pb_header_content_wrapper p {
+	color: var(--main-bg-color);
+}
+/*mobile menu hamburger color*/
+div#top-menu li.current-menu-ancestor > a, #top-menu li.current-menu-item > a, .mobile_menu_bar::after, .mobile_menu_bar::before {
+	color: var(--dccc-yellow);
+}
+div#et-top-navigation nav#top-menu-nav ul#top-menu li.current-menu-item ul.sub-menu li a {
+	color: var(--main-font-color);
+}
+ul#mobile_menu {
+	border-top: 3px solid var(--dccc-yellow);
+	background-color: var(--main-header-color);
+}
+ul#mobile_menu li a, ul#mobile_menu li ul.sub-menu a {
+	color: var(--main-font-color);
+}
+
+ul#mobile_menu li.current-menu-item a, ul#mobile_menu li.current-menu-ancestor ul.sub-menu li.current-menu-item a {
+	color: var(--dccc-yellow);
+}
+
+/********************************footer*********************/
+div#footer-widgets div.footer-widget div#block-9 h2 {
+	color: var(--dccc-yellow);
+}
+ol#core-beliefs li {
+	margin-bottom: 2rem;
+}

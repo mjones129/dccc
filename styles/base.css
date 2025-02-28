@@ -1,0 +1,35 @@
+:root {
+	--main-bg-color: #262626;
+	--main-font-color: #f2f2f2;
+	--main-header-color: #4a4a4a;
+	--dccc-yellow: #facf2c;
+}
+
+/***************set background color****************/
+div#main-content {
+	overflow-x: hidden;
+	background-color: var(--main-bg-color) !important;
+}
+div#et-main-area {
+	background-color: var(--main-bg-color);
+}
+
+article {
+	background-color: var(--main-bg-color) !important;
+}
+/**********************set font color ******************/
+h1, h2, h3, h4, h5, h6, p, article {
+	color: var(--main-font-color);
+}
+/*except for inside light-colored headers*/
+div.et_pb_header_content_wrapper p {
+	color: var(--main-bg-color);
+}
+
+.et_pb_section {
+	background-color: transparent !important;
+}
+/*************************set header background color **************/
+header#main-header {
+	background-color: var(--main-header-color);
+}
