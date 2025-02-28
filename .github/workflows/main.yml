@@ -17,9 +17,8 @@ jobs:
       - name: Add public key to authorized_keys
         run: |
           mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
-          ssh-keyscan ${REMOTE_HOST} >> ~/.ssh/known_hosts
           eval $(ssh-agent)
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+          ssh-add ${SSH_PRIVATE_KEY}
 
       - name: Checkout repository
         uses: actions/checkout@v4
