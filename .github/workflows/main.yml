@@ -6,6 +6,7 @@ on:
 
 env:
   REMOTE_HOST: 104.248.234.138
+  REMOTE_USER: matt
   REMOTE_DIR: /home/matt/workflow_test/
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
@@ -14,15 +15,25 @@ jobs:
   setup_ssh_keys:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repo
+      - uses: actions/checkout@v4
+      
       - name: Add public key to authorized_keys
         run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
           echo "$SSH_PUBLIC_KEY" >> ~/.ssh/authorized_keys
+          chmod 600 ~/.ssh/authorized_keys
 
   copy_repository:
     runs-on: ubuntu-latest
     steps:
-      - name: Copy repository using SCP
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Start SSH agent
+        run: eval $(ssh-agent -s)
+      
+      - name: Copy files via SCP
         run: |
-          eval $(ssh-agent -s)
-          ssh-add <(echo "$SSH_PRIVATE_KEY")
-          scp -r ./$REMOTE_HOST:$REMOTE_DIR
+          scp -r ./${{ GITHUB_WORKSPACE }}/${{ GITHUB_REF }} ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}
