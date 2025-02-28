@@ -6,7 +6,6 @@ on:
 
 env:
   REMOTE_HOST: 104.248.234.138
-  REMOTE_USER: matt
   REMOTE_DIR: /home/matt/workflow_test/
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
@@ -36,4 +35,4 @@ jobs:
       
       - name: Copy files via SCP
         run: |
-          scp -r . ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}
+          scp -r . ${REMOTE_HOST}:${REMOTE_DIR}
