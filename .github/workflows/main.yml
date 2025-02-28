@@ -1,0 +1,28 @@
+name: Deploy to Digital Ocean
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  REMOTE_HOST: 104.248.234.138
+  REMOTE_DIR: /home/matt/workflow_test/
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+
+jobs:
+  setup_ssh_keys:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add public key to authorized_keys
+        run: |
+          echo "$SSH_PUBLIC_KEY" >> ~/.ssh/authorized_keys
+
+  copy_repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy repository using SCP
+        run: |
+          eval $(ssh-agent -s)
+          ssh-add <(echo "$SSH_PRIVATE_KEY")
+          scp -r ./$REMOTE_HOST:$REMOTE_DIR
