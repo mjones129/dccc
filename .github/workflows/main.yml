@@ -7,6 +7,7 @@ on:
 env:
   REMOTE_HOST: 104.248.234.138
   REMOTE_DIR: /home/matt/workflow_test/
+  REMOTE_USER: ${{ secrets.REMOTE_USER }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
 
@@ -16,15 +17,16 @@ jobs:
     steps:
       - name: Add public key to authorized_keys
         run: |
-          mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
           eval $(ssh-agent)
-          echo ${SSH_PRIVATE_KEY} > ~/.ssh/github
-          chmod 600 ~/.ssh/github
-          ssh-add ~/.ssh/github
+          echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan $REMOTE_HOST >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
 
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Copy files via SCP
         run: |
-          scp -r . ${REMOTE_HOST}:${REMOTE_DIR}
+          scp -r . ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}
