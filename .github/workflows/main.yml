@@ -11,23 +11,19 @@ env:
   SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
 
 jobs:
-  setup_ssh_keys:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      
       - name: Add public key to authorized_keys
         run: |
           mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
           ssh-keyscan ${REMOTE_HOST} >> ~/.ssh/known_hosts
           eval $(ssh-agent)
-          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
 
-  copy_repository:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Copy files via SCP
         run: |
           scp -r . ${REMOTE_HOST}:${REMOTE_DIR}
