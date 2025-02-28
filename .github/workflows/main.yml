@@ -19,6 +19,7 @@ jobs:
           mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
           eval $(ssh-agent)
           echo ${SSH_PRIVATE_KEY} > ~/.ssh/github
+          chmod 600 ~/.ssh/github
           ssh-add ~/.ssh/github
 
       - name: Checkout repository
