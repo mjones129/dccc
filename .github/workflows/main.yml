@@ -17,10 +17,7 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/dccc_deploy
         chmod 600 ~/.ssh/dccc_deploy
         ssh-add ~/.ssh/dccc_deploy
-
-    - name: connection test
-      run: |
-        ssh ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} ls -l ~/
+        ssh-keyscan -H ${{secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
 
     - name: copy files
       run: |
