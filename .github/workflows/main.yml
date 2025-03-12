@@ -10,16 +10,14 @@ jobs:
     - name: checkout code
       uses: actions/checkout@v3
 
-    - name: ssh keys
-      run: |
-        mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
-        echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/dccc_deploy.pub
-        eval $(ssh-agent -s)
-        ssh-add ~/.ssh/dccc_deploy
-
     - name: copy files
-      run: |
-        rsync -avz --progress ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
-
+      uses: pierrickdelrieu/scp-action@v0.1.0
+      with:
+        host: ${{secrets.REMOTE_HOST}}
+        ssh_port: 22
+        ssh_username: ${{secrets.REMOTE_USER}}
+        ssh_key: ${{secrets.SSH_PRIVATE_KEY}}
+        source_dir: .
+        destination_dir: ~/workflow_test
+        rm: true
     
