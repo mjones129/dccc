@@ -13,7 +13,7 @@ jobs:
     - name: ssh keys
       run: |
         eval $(ssh-agent -s)
-        ssh-add <(echo ${{secrets.SSH_PRIVATE_KEY}})
+        ssh-add ${{secrets.SSH_PRIVATE_KEY}}
 
     - name: copy files
       run: |
