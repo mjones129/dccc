@@ -22,11 +22,9 @@ jobs:
 
     - name: add the keys to the agent
       run: |
-        ssh-add ~/.ssh/id_25519
-        ssh-keyscan -H ${{secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
+        ssh-add ~/.ssh/id_ed25519
+        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
     - name: copy files
       run: |
-        scp -v ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
-
-    
+        scp -v ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
