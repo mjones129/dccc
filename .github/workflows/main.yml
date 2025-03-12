@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: copy files
       uses: pierrickdelrieu/scp-action@v0.1.0
