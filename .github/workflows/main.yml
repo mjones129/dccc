@@ -18,7 +18,6 @@ jobs:
         chmod 600 ~/.ssh/dccc_deploy
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/dccc_deploy
-        ssh-keyscan -H ${{secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
 
     - name: copy files
       run: |
