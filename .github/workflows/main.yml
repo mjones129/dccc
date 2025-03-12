@@ -7,14 +7,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout code
+    - name: copy to remote
       uses: actions/checkout@v2
 
+    - name: ssh keys
+      run: |
+        eval $(ssh-agent -s)
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/dccc_deploy
+        chmod 600 ~/.ssh/dccc_deploy
+        ssh-add ~/.ssh/dccc_deploy
+        ssh-keyscan -H ${{secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
+
     - name: copy files
-      uses: srueda99/scp-action@v12
-      with:
-        host: ${{secrets.REMOTE_HOST}}
-        username: ${{secrets.REMOTE_USER}}
-        key: ${{secrets.SSH_PRIVATE_KEY}}
-        destination: ~/workflow_test
+      run: |
+        scp -v ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
+
     
