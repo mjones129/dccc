@@ -10,12 +10,18 @@ jobs:
     - name: copy to remote
       uses: actions/checkout@v2
 
-    - name: ssh keys
+    - name: start ssh agent
       run: |
         eval $(ssh-agent -s)
+
+    - name: write the ssh keys
+      run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
+
+    - name: add the keys to the agent
+      run: |
         ssh-add ~/.ssh/id_25519
         ssh-keyscan -H ${{secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
 
