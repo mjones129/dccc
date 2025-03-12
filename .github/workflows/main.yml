@@ -8,7 +8,7 @@ env:
 
 jobs:
   setup-ssh:
-    runs-on: ${{ env.NODE }}
+    runs-on: env.NODE
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -29,7 +29,7 @@ jobs:
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
   deploy:
-    runs-on: ${{ env.NODE }}
+    runs-on: env.NODE
     needs: setup-ssh
     steps:
       - name: Copy files using SSH
