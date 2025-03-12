@@ -7,13 +7,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: copy file via ssh key
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        port: ${{ secrets.REMOTE_PORT }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "."
-        target: ~/workflow_test
+    - name: copy to remote
+    uses: actions/checkout@v3
+
+    -name: copy files
+    run: |
+    rsync -avz --progress ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
+
     
