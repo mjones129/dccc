@@ -20,7 +20,7 @@ jobs:
 
     - name: connection test
       run: |
-      ssh ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} ls -l ~/
+        ssh ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} ls -l ~/
 
     - name: copy files
       run: |
