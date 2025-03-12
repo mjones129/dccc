@@ -18,6 +18,10 @@ jobs:
         chmod 600 ~/.ssh/dccc_deploy
         ssh-add ~/.ssh/dccc_deploy
 
+    - name: connection test
+      run: |
+      ssh ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} ls -l ~/
+
     - name: copy files
       run: |
         rsync -avz --progress ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
