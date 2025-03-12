@@ -14,10 +14,6 @@ jobs:
       run: |
         eval $(ssh-agent -s)
         mkdir -p ~/.ssh
-
-
-    - name: add keys
-      run: |
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/dccc_deploy
         chmod 600 ~/.ssh/dccc_deploy
         ssh-add ~/.ssh/dccc_deploy
