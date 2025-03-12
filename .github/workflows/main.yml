@@ -10,8 +10,13 @@ jobs:
     - name: copy to remote
       uses: actions/checkout@v3
 
+    -name: ssh keys
+    run: |
+    eval ($ssh-agent -s)
+    ssh-add <(echo ${{secrets.SSH_PRIVATE_KEY}})
+
     - name: copy files
-      run: |
-        rsync -avz --progress ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
+    run: |
+    rsync -avz --progress ./ ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
 
     
