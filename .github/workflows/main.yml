@@ -15,6 +15,9 @@ jobs:
         eval $(ssh-agent -s)
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/dccc_deploy
         chmod 600 ~/.ssh/dccc_deploy
+
+    - name: add keys
+      run: |
         ssh-add ~/.ssh/dccc_deploy
 
     - name: copy files
