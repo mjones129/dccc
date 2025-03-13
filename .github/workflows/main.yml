@@ -6,13 +6,16 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
     - name: copy to remote
       uses: actions/checkout@v2
 
     - name: start ssh agent
       run: |
-        eval $(ssh-agent -s)
+        eval `ssh-agent -s`
 
     - name: write the ssh keys
       run: |
