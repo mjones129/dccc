@@ -1,0 +1,26 @@
+name: Deploy to Digital Ocean
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v2
+
+    - name: start ssh agent
+      run: |
+        eval "$(ssh-agent -s)"
+        export SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+        ssh-add ~/.ssh/id_rsa
+
+    - name: copy files to remote server
+      run: |
+        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+        scp -r ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
+
+    - name: add the keys to the agent (optional but recommended)
+      run: |
+        ssh-add -l
