@@ -23,7 +23,7 @@ jobs:
     - name: add the keys to the agent
       run: |
         ssh-add ~/.ssh/id_ed25519
-        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H -t "ed25519" ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
     - name: copy files
       run: |
