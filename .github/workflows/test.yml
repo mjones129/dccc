@@ -14,6 +14,7 @@ jobs:
       run: |
         eval "$(ssh-agent -s)"
         export SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+        echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
         ssh-add ~/.ssh/id_rsa
 
     - name: copy files to remote server
