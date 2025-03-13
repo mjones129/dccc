@@ -2,36 +2,29 @@ name: Deploy to Digital Ocean
 on:
   push:
     branches: [ master ]
-
-env:
-  NODE: ubuntu-latest
-
+  
 jobs:
-  setup-ssh:
-    runs-on: env.NODE
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Start SSH Agent
-        run: |
-          eval $(ssh-agent -s)
-      
-      - name: Write SSH private key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-      
-      - name: Add keys to agent
-        run: |
-          ssh-add ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-
   deploy:
-    runs-on: env.NODE
-    needs: setup-ssh
+    runs-on: ubuntu-latest
     steps:
-      - name: Copy files using SSH
-        run: |
-          scp -v ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
+    - name: copy to remote
+      uses: actions/checkout@v2
+
+    - name: start ssh agent
+      run: |
+        eval $(ssh-agent -s)
+
+    - name: write the ssh keys
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+
+    - name: add the keys to the agent
+      run: |
+        ssh-add ~/.ssh/id_ed25519
+        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+    - name: copy files
+      run: |
+        scp -v ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
