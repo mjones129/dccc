@@ -23,6 +23,6 @@ jobs:
         ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts &&
         scp *.php ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
         scp *.css ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
-        scp -r styles ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
+        scp -r ./styles ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
         ssh ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} "chown -R www-data:www-data ~/workflow_test" &&
         ssh ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} "chmod 755 ~/workflow_test"
