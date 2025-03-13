@@ -6,16 +6,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
     steps:
     - name: copy to remote
       uses: actions/checkout@v2
 
     - name: start ssh agent
       run: |
-        eval `ssh-agent -s`
+        eval $(ssh-agent -s)
 
     - name: write the ssh keys
       run: |
@@ -26,8 +23,8 @@ jobs:
     - name: add the keys to the agent
       run: |
         ssh-add ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-
+        
     - name: copy files
       run: |
+        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
         scp -v ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
