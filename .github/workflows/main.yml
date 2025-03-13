@@ -21,7 +21,7 @@ jobs:
 
     - name: copy files
       run: |
-        rsync -rav --include='functions.php' --include='style.css' --include="./styles" --exclude='*' ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
+        rsync -rav --include="functions.php" --include="style.css" --include="./styles" --exclude=".*" ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
 
     - name: set permissions on remote
       run: |
