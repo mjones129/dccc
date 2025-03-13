@@ -22,7 +22,7 @@ jobs:
 
     - name: echo the sock
       run: |
-        echo $SSH_AUTH_SOCK
+        export SSH_AUTH_SOCK=$(echo $SSH_AUTH_SOCK)
 
     - name: add the keys to the agent
       run: |
