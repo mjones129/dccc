@@ -20,6 +20,10 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
 
+    - name: echo the sock
+      run: |
+        echo $SSH_AUTH_SOCK
+
     - name: add the keys to the agent
       run: |
         ssh-add ~/.ssh/id_rsa
