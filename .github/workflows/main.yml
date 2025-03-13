@@ -21,6 +21,8 @@ jobs:
     - name: copy files
       run: |
         ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts &&
-        scp -r ./ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
+        scp *.php ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
+        scp *.css ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
+        scp -r styles ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
         chown -R www-data:www-data ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test &&
         chmod 755 ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}}:/home/${{secrets.REMOTE_USER}}/workflow_test
