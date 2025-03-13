@@ -12,21 +12,11 @@ jobs:
 
     - name: start ssh agent
       run: |
-        eval $(ssh-agent -s)
-
-    - name: write the ssh keys
-      run: |
+        eval $(ssh-agent -s) &&
         mkdir -p ~/.ssh &&
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa &&
-        chmod 600 ~/.ssh/id_rsa
-
-    - name: echo the sock
-      run: |
-        export SSH_AUTH_SOCK=$(echo $SSH_AUTH_SOCK)
-
-    - name: add the keys to the agent
-      run: |
-        ssh-add -l
+        echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa &&
+        chmod 600 ~/.ssh/id_rsa &&
+        ssh-add ~/.ssh/id_rsa
       
     - name: copy files
       run: |

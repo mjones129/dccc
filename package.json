@@ -1,0 +1,24 @@
+{
+  "name": "dccc",
+  "version": "1.0.0",
+  "description": "wordpress child theme",
+  "homepage": "https://github.com/mjones129/dccc#readme",
+  "bugs": {
+    "url": "https://github.com/mjones129/dccc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjones129/dccc.git"
+  },
+  "license": "ISC",
+  "author": "Matt Jones",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@action-validator/cli": "^0.6.0",
+    "@action-validator/core": "^0.6.0"
+  }
+}
