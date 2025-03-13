@@ -21,8 +21,8 @@ jobs:
 
     - name: copy files
       run: |
-        chown -R www-data:www-data ./*
-        chmod 755 ./*
+        sudo chown -R www-data:www-data ./*
+        sudo chmod 755 ./*
         scp *.php ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
         scp *.css ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
         scp -r ./styles/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
