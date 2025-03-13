@@ -21,8 +21,11 @@ jobs:
 
     - name: copy files
       run: |
-        sudo chown -R www-data:www-data ./* &&
-        sudo chmod 755 ./* &&
         scp *.php ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
         scp *.css ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test &&
-        scp -r ./styles/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
+        scp -r ./styles ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}/workflow_test
+
+    - name: set permissions on remote
+      run: |
+        ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -t -o RemoteCommand="chown -R www-data:www-data ~/workflow_test"
+        ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -t -o RemoteCommand="chmod 755 ~/workflow_test"
