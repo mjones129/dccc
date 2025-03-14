@@ -21,7 +21,7 @@ jobs:
 
     - name: copy files
       run: |
-        echo '${{secrets.SUDO_PW}}' | sudo -S rsync -rav ./* --exclude=".*" ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{secrets.REMOTE_DEST}}
+        rsync --super -rav ./* --exclude=".*" ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{secrets.REMOTE_DEST}}
 
     - name: set permissions on remote
       run: |
