@@ -25,5 +25,5 @@ jobs:
 
     - name: set permissions on remote
       run: |
-        ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -t -o RemoteCommand="sudo chown -R www-data:www-data ~/workflow_test"
-        ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -t -o RemoteCommand="sudo chmod 755 ~/workflow_test"
+        ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -t -o RemoteCommand="echo '${{secrets.SUDO_PW}}' | sudo -S chown -R www-data:www-data ~/workflow_test" &&
+        ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -t -o RemoteCommand="echo '${{secrets.SUDO_PW}}' | sudo -S chmod 755 ~/workflow_test"
